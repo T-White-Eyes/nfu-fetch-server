@@ -5,6 +5,9 @@ object Version {
     const val SPRING_BOOT_VERSION = "3.3.3"
     const val JACKSON_MODULE_VERSION = "2.17.2"
     const val MARIADB_JAVA_CLIENT_VERSION = "3.4.1"
+    const val QUERY_DSL_VERSION = "5.1.0"
+    const val KOTLIN_LOGGING_VERSION = "7.0.0"
+    const val GSON_VERSION = "2.11.0"
 }
 
 plugins {
@@ -41,13 +44,23 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:${Version.KOTLIN_VERSION}")
 
     implementation("org.springframework.boot:spring-boot-starter-web:${Version.SPRING_BOOT_VERSION}")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:${Version.SPRING_BOOT_VERSION}")
+    implementation("org.springframework.boot:spring-boot-starter-batch:${Version.SPRING_BOOT_VERSION}")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:${Version.SPRING_BOOT_VERSION}")
     implementation("org.springframework.cloud:spring-cloud-starter-config:${Version.SPRING_CLOUD_CONFIG_VERSION}")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${Version.NETFLIX_EUREKA_CLIENT_VERSION}")
 
     implementation("org.mariadb.jdbc:mariadb-java-client:${Version.MARIADB_JAVA_CLIENT_VERSION}")
 
+    implementation("com.querydsl:querydsl-jpa:${Version.QUERY_DSL_VERSION}:jakarta")
+    kapt("com.querydsl:querydsl-apt:${Version.QUERY_DSL_VERSION}:jakarta")
+
+    implementation("io.github.oshai:kotlin-logging-jvm:${Version.KOTLIN_LOGGING_VERSION}")
+
+    implementation("com.google.code.gson:gson:${Version.GSON_VERSION}")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test:${Version.SPRING_BOOT_VERSION}")
+    testImplementation("org.springframework.batch:spring-batch-test:${Version.SPRING_BOOT_VERSION}")
 }
 
 dependencyManagement {

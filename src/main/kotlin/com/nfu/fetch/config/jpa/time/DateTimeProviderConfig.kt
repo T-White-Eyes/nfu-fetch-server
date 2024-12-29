@@ -1,0 +1,17 @@
+package com.nfu.fetch.config.jpa.time
+
+import com.nfu.fetch.constant.time.DateTimeProviderName
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.data.auditing.DateTimeProvider
+import java.time.OffsetDateTime
+import java.util.*
+
+@Configuration
+class DateTimeProviderConfig {
+
+    @Bean(DateTimeProviderName.OFFSET_DATE_TIME_PROVIDER)
+    fun dateTimeProvider(): DateTimeProvider {
+        return DateTimeProvider { Optional.of(OffsetDateTime.now()) }
+    }
+}
